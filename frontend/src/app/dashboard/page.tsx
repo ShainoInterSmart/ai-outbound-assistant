@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import AutomationControl from "@/components/AutomationControl";
 
 export default async function DashboardPage() {
   const { data, error } = await supabase
@@ -37,9 +38,8 @@ export default async function DashboardPage() {
           Automation Status
         </h2>
 
-        <div className="mt-3 text-2xl font-bold">
-          {isActive ? "🟢 ACTIVE" : "🔴 PAUSED"}
-        </div>
+
+        <AutomationControl status={data.status} />
 
         <div className="mt-2 text-sm text-gray-500">
           Last updated:{" "}
